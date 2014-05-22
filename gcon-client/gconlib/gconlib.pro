@@ -13,10 +13,12 @@ TEMPLATE = lib
 
 DEFINES += GCONLIB_LIBRARY
 
-SOURCES += commandsender.cpp
+SOURCES += commandsender.cpp \
+    ctrlcommand.cpp
 
 HEADERS += commandsender.h\
-        gconlib_global.h
+        gconlib_global.h \
+    ctrlcommand.h
 
 unix {
     target.path = /usr/lib
