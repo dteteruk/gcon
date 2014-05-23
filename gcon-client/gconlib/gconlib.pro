@@ -14,11 +14,15 @@ TEMPLATE = lib
 DEFINES += GCONLIB_LIBRARY
 
 SOURCES += commandsender.cpp \
-    ctrlcommand.cpp
+    ctrlcommand.cpp \
+    suspendcmd.cpp \
+    mutecmd.cpp
 
 HEADERS += commandsender.h\
         gconlib_global.h \
-    ctrlcommand.h
+    ctrlcommand.h \
+    suspendcmd.h \
+    mutecmd.h
 
 unix {
     target.path = /usr/lib

@@ -19,9 +19,11 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    commandmanager.cpp
 
-HEADERS +=
+HEADERS += \
+    commandmanager.h
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../lib/release/ -lgcon
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../lib/debug/ -lgcon
