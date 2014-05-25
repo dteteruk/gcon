@@ -1,18 +1,14 @@
 #include "commandsender.h"
+#include "commandmanager.h"
+#include "mutecmd.h"
+#include "suspendcmd.h"
 #include <QString>
 #include <QDebug>
 
 void printUsage();
-
-int main(int argc, char *argv[])
-{
-    if (argc <= 1) {
-        printUsage();
-        return 0;
-    }
-
-    CommandSender::Send(QString(argv[1]));
-    return 0;
+void registerCommands() {
+    RegisterCommand<MuteCmd>("mute");
+    RegisterCommand<SuspendCmd>("suspend");
 }
 
 void printUsage()
@@ -23,4 +19,22 @@ void printUsage()
 
 }
 
+int main(int argc, char *argv[])
+{
+    if (argc <= 1) {
+        printUsage();
+        return 0;
+    }
+
+    registerCommands();
+
+    CtrlCommand* cmd = CommandManager::getCommand(QString(argv[1]));
+    if (cmd == NULL) {
+        printUsage();
+        return -1;
+    }
+
+    CommandSender::Send(cmd->getString());
+    return 0;
+}
 
