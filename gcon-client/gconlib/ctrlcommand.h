@@ -1,17 +1,20 @@
 #ifndef CTRLCOMMAND_H
 #define CTRLCOMMAND_H
 
-#include <QJsonValue>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QByteArray>
 
 class CtrlCommand
 {
 public:
     CtrlCommand();
 
-    QString getString();
+    virtual QByteArray getJson();
 
-private:
-    QJsonValue mJson;
+protected:
+    QJsonObject mCmd;
+
 };
 
 #endif // CTRLCOMMAND_H

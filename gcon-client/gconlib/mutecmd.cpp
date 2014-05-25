@@ -2,4 +2,5 @@
 
 MuteCmd::MuteCmd()
 {
+    mCmd["cmd"] = QString("mute");
 }

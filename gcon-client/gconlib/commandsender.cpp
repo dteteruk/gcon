@@ -1,6 +1,6 @@
 #include "commandsender.h"
 #include <QDebug>
 
-void CommandSender::Send(QString cmd){
-    qDebug()<<"Send command"<<cmd;
+void CommandSender::Send(QByteArray json){
+    qDebug()<<"Send command"<<json.data();
 }

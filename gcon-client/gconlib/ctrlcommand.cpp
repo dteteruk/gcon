@@ -1,9 +1,10 @@
 #include "ctrlcommand.h"
 
-CtrlCommand::CtrlCommand(): mJson()
+CtrlCommand::CtrlCommand(): mCmd()
 {
 }
 
-QString CtrlCommand::getString() {
-    return mJson.toString();
+QByteArray CtrlCommand::getJson() {
+    QJsonDocument doc(mCmd);
+    return doc.toJson();
 }

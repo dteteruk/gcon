@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    CommandSender::Send(cmd->getString());
+    CommandSender::Send(cmd->getJson());
     return 0;
 }
 

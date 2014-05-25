@@ -2,4 +2,5 @@
 
 SuspendCmd::SuspendCmd()
 {
+    mCmd["cmd"] = QString("suspend");
 }
