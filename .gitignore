@@ -33,3 +33,4 @@ build-*
 Makefile
 bin
 lib
+moc_*

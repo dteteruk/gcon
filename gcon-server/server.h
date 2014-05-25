@@ -5,8 +5,9 @@
 #include <QtNetwork/QTcpServer>
 #include "dispatcher.h"
 
-class Server: QObject
+class Server: public QObject
 {
+    Q_OBJECT
 public:
     Server(Dispatcher* d, int port);
 

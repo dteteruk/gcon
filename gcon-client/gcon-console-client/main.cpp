@@ -4,6 +4,7 @@
 #include "suspendcmd.h"
 #include <QString>
 #include <QDebug>
+#include <QCoreApplication>
 
 void printUsage();
 void registerCommands() {
@@ -21,6 +22,7 @@ void printUsage()
 
 int main(int argc, char *argv[])
 {
+    QCoreApplication app(argc, argv);
     if (argc <= 1) {
         printUsage();
         return 0;
@@ -34,7 +36,11 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    CommandSender::Send(cmd->getJson());
+    CommandSender cmdSender;
+    cmdSender.Send(cmd->getJson());
+
+    app.exec();
+
     return 0;
 }
 

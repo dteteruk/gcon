@@ -3,7 +3,7 @@
 Server::Server(Dispatcher *d, int port):
     mServer(), mDispatcher(d)
 {
-    connect(&mServer, SIGNAL(newConnection), this, SLOT(gotNewConnection));
+    connect(&mServer, SIGNAL(newConnection()), this, SLOT(gotNewConnection()));
 
     if (mServer.listen(QHostAddress::Any, port)) {
         qDebug() << QString::fromUtf8("Server is started");

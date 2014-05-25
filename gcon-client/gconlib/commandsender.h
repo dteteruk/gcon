@@ -3,12 +3,21 @@
 
 #include "gconlib_global.h"
 #include <QByteArray>
+#include <QtNetwork/QTcpSocket>
+#include <QObject>
 
-class GCONLIBSHARED_EXPORT CommandSender
+class GCONLIBSHARED_EXPORT CommandSender: public QObject
 {
-
+    Q_OBJECT
 public:
-    static void Send(QByteArray json);
+    CommandSender();
+    void Send(QByteArray json);
+
+private:
+    QTcpSocket mTcpSocket;
+
+private slots:
+    void gotError(QAbstractSocket::SocketError err);
 };
 
 #endif // COMMANDSENDER_H
