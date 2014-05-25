@@ -1,0 +1,18 @@
+#-------------------------------------------------
+#
+# Project created by QtCreator 2014-05-25T16:32:17
+#
+#-------------------------------------------------
+
+QT       += core
+
+QT       -= gui
+
+TARGET = gcon-server
+CONFIG   += console
+CONFIG   -= app_bundle
+
+TEMPLATE = app
+
+
+SOURCES += main.cpp
