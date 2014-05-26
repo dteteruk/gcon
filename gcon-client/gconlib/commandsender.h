@@ -12,12 +12,15 @@ class GCONLIBSHARED_EXPORT CommandSender: public QObject
 public:
     CommandSender();
     void Send(QByteArray json);
+signals:
+    void commandSent();
 
 private:
     QTcpSocket mTcpSocket;
 
 private slots:
     void gotError(QAbstractSocket::SocketError err);
+    void sent();
 };
 
 #endif // COMMANDSENDER_H
