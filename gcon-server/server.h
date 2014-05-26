@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QtNetwork/QTcpServer>
+#include <QtNetwork/QTcpSocket>
 #include "dispatcher.h"
 
 class Server: public QObject
@@ -19,6 +20,7 @@ private:
 
 private slots:
     void gotNewConnection();
+    void readClient();
 };
 
 #endif // SERVER_H
