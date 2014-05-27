@@ -39,6 +39,7 @@ int main(int argc, char *argv[])
     CommandSender cmdSender;
     QObject::connect(&cmdSender, SIGNAL(commandSent()), &app, SLOT(quit()));
     cmdSender.Send(cmd->getJson());
+    delete cmd;
 
     app.exec();
 

@@ -23,7 +23,7 @@ void Server::readClient()
 {
 
     QTcpSocket* clientSocket = static_cast<QTcpSocket*>(sender());
-    QString s(clientSocket->readAll());
-    qDebug() << "I've just recieve new message: "<<s;
+    QByteArray data(clientSocket->readAll());
+    mDispatcher->dispatchCommand(data);
     clientSocket->close();
 }
