@@ -32,3 +32,5 @@ HEADERS += \
     muteexecutor.h \
     suspendexecutor.h \
     servershutdownexecutor.h
+
+LIBS += -lasound
