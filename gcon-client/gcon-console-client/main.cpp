@@ -1,15 +1,18 @@
+#include <QString>
+#include <QDebug>
+#include <QCoreApplication>
+
 #include "commandsender.h"
 #include "commandmanager.h"
 #include "mutecmd.h"
 #include "suspendcmd.h"
-#include <QString>
-#include <QDebug>
-#include <QCoreApplication>
+#include "servershutdowncmd.h"
 
 void printUsage();
 void registerCommands() {
     RegisterCommand<MuteCmd>("mute");
     RegisterCommand<SuspendCmd>("suspend");
+    RegisterCommand<ServerShutdownCmd>("exit");
 }
 
 void printUsage()

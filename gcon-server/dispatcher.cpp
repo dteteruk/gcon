@@ -14,7 +14,9 @@ void Dispatcher::dispatchCommand(const QByteArray &cmd)
         QJsonObject jobj = jdoc.object();
         QString cmdStr = jobj["cmd"].toString();
         CommandExecutor* cmdExecutor = getCommandExecutor(cmdStr);
-        cmdExecutor->execute(jobj);
+        if (cmdExecutor != NULL)
+            cmdExecutor->execute(jobj);
+            delete cmdExecutor;
     }
 
 

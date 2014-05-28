@@ -9,6 +9,7 @@ class CtrlCommand
 {
 public:
     CtrlCommand();
+    virtual ~CtrlCommand();
 
     virtual QByteArray getJson();
 

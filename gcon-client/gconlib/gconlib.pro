@@ -17,13 +17,15 @@ DEFINES += GCONLIB_LIBRARY
 SOURCES += commandsender.cpp \
     ctrlcommand.cpp \
     suspendcmd.cpp \
-    mutecmd.cpp
+    mutecmd.cpp \
+    servershutdowncmd.cpp
 
 HEADERS += commandsender.h\
         gconlib_global.h \
     ctrlcommand.h \
     suspendcmd.h \
-    mutecmd.h
+    mutecmd.h \
+    servershutdowncmd.h
 
 unix {
     target.path = /usr/lib

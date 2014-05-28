@@ -22,11 +22,13 @@ SOURCES += main.cpp \
     server.cpp \
     commandexecutor.cpp \
     muteexecutor.cpp \
-    suspendexecutor.cpp
+    suspendexecutor.cpp \
+    servershutdownexecutor.cpp
 
 HEADERS += \
     dispatcher.h \
     server.h \
     commandexecutor.h \
     muteexecutor.h \
-    suspendexecutor.h
+    suspendexecutor.h \
+    servershutdownexecutor.h
