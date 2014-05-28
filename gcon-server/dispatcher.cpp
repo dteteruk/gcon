@@ -13,7 +13,8 @@ void Dispatcher::dispatchCommand(const QByteArray &cmd)
     if (jdoc.isObject()) {
         QJsonObject jobj = jdoc.object();
         QString cmdStr = jobj["cmd"].toString();
-        qDebug()<<"Dispatcher get command"<<cmdStr;
+        CommandExecutor* cmdExecutor = getCommandExecutor(cmdStr);
+        cmdExecutor->execute(jobj);
     }
 
 
@@ -21,4 +22,18 @@ void Dispatcher::dispatchCommand(const QByteArray &cmd)
 
 CmdExecutorMap* Dispatcher::getMap() {
     return &mCmdMap;
+}
+
+CommandExecutor* Dispatcher::getCommandExecutor(const QString &s)
+{
+    if (!s.isEmpty()) {
+        CmdExecutorMap::iterator it = mCmdMap.find(s);
+        if ((it != mCmdMap.end()) && (it.key() == s)) {
+            qWarning()<<"Gonna create "<<s;
+            return it.value()();
+        }
+    }
+    qWarning()<<"No such executor:"<<s;
+    return NULL;
+
 }

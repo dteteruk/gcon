@@ -30,6 +30,7 @@ public:
 
 private:
     CmdExecutorMap mCmdMap;
+    CommandExecutor* getCommandExecutor(const QString &s);
 
 };
 

@@ -20,9 +20,13 @@ TEMPLATE = app
 SOURCES += main.cpp \
     dispatcher.cpp \
     server.cpp \
-    commandexecutor.cpp
+    commandexecutor.cpp \
+    muteexecutor.cpp \
+    suspendexecutor.cpp
 
 HEADERS += \
     dispatcher.h \
     server.h \
-    commandexecutor.h
+    commandexecutor.h \
+    muteexecutor.h \
+    suspendexecutor.h
