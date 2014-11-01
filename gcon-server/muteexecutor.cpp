@@ -9,7 +9,7 @@ MuteExecutor::MuteExecutor()
 void MuteExecutor::execute(const QJsonObject &jobj)
 {
     qDebug()<<"Mute execute";
-    long min, max;
+    long min, max, volume, cur_vol;
     snd_mixer_t *handle;
     snd_mixer_selem_id_t *sid;
     const char *card = "default";
@@ -25,9 +25,14 @@ void MuteExecutor::execute(const QJsonObject &jobj)
     snd_mixer_selem_id_set_name(sid, selem_name);
     snd_mixer_elem_t* elem = snd_mixer_find_selem(handle, sid);
 
-    if (snd_mixer_selem_has_playback_switch(elem)) {
-        snd_mixer_selem_set_playback_switch_all(elem, 0);
-    }
+    snd_mixer_selem_get_playback_volume(elem, snd_mixer_selem_channel_id_t(0), &cur_vol);
+
+    snd_mixer_selem_get_playback_volume_range(elem, &min, &max);
+
+    volume = (cur_vol > 0) ? 0 : 0.8*max;
+    int err = snd_mixer_selem_set_playback_volume_all(elem, volume);
+
+    qDebug()<<volume<<min<<max<<cur_vol<<err;
 
     snd_mixer_close(handle);
 }
