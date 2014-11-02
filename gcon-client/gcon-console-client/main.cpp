@@ -7,11 +7,13 @@
 #include "mutecmd.h"
 #include "suspendcmd.h"
 #include "servershutdowncmd.h"
+#include "volumecmd.h"
 
 void printUsage();
 void registerCommands() {
     RegisterCommand<MuteCmd>("mute");
     RegisterCommand<SuspendCmd>("suspend");
+    RegisterCommand<VolumeCmd>("volume");
     RegisterCommand<ServerShutdownCmd>("exit");
 }
 
@@ -19,7 +21,9 @@ void printUsage()
 {
     qDebug()<<"Usage:"<<"\n"
             <<"\t suspend   - send suspend command"<<"\n"
-            <<"\t mute      - send mute command";
+            <<"\t mute      - send mute command"<<"\n"
+            <<"\t volume    - send volume command"<<"\n"
+            <<"\t exit      - send exit command for server";
 
 }
 

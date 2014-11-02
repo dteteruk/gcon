@@ -18,14 +18,16 @@ SOURCES += commandsender.cpp \
     ctrlcommand.cpp \
     suspendcmd.cpp \
     mutecmd.cpp \
-    servershutdowncmd.cpp
+    servershutdowncmd.cpp \
+    volumecmd.cpp
 
 HEADERS += commandsender.h\
         gconlib_global.h \
     ctrlcommand.h \
     suspendcmd.h \
     mutecmd.h \
-    servershutdowncmd.h
+    servershutdowncmd.h \
+    volumecmd.h
 
 unix {
     target.path = /usr/lib

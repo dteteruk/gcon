@@ -6,6 +6,7 @@
 #include "muteexecutor.h"
 #include "suspendexecutor.h"
 #include "servershutdownexecutor.h"
+#include "volumeexecutor.h"
 
 int main(int argc, char *argv[])
 {
@@ -15,6 +16,7 @@ int main(int argc, char *argv[])
     d.addCommand<MuteExecutor>("mute");
     d.addCommand<SuspendExecutor>("suspend");
     d.addCommand<ServerShutdownExecutor>("server-shutdown");
+    d.addCommand<VolumeExecutor>("volume");
 
     Server serv(&d, 7727);
 
