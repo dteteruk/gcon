@@ -20,6 +20,7 @@ void Dispatcher::dispatchCommand(const QByteArray &cmd)
     }
 
 
+
 }
 
 CmdExecutorMap* Dispatcher::getMap() {

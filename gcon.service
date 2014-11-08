@@ -1,0 +1,9 @@
+[Unit]
+Description=gcon server
+After=dbus.service
+
+[Service]
+ExecStart=/home/dmytro/Universe/gcon/bin/gcon-server
+
+[Install]
+WantedBy=multi-user.target

@@ -9,11 +9,14 @@ VolumeExecutor::VolumeExecutor()
 void VolumeExecutor::execute(const QJsonObject &jobj)
 {
     qDebug()<<"Volume execute";
+
     long min, max, volume, cur_vol;
     snd_mixer_t *handle;
     snd_mixer_selem_id_t *sid;
     const char *card = "default";
     const char *selem_name = "Master";
+
+    volume = jobj["volume"].toInt();
 
     snd_mixer_open(&handle, 0);
     snd_mixer_attach(handle, card);
@@ -27,7 +30,6 @@ void VolumeExecutor::execute(const QJsonObject &jobj)
 
     snd_mixer_selem_get_playback_volume_range(elem, &min, &max);
 
-    volume = 23;
     int err = snd_mixer_selem_set_playback_volume_all(elem, volume*max/100);
 
     qDebug()<<volume<<min<<max<<cur_vol<<err;

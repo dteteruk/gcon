@@ -24,6 +24,7 @@ void Server::readClient()
 
     QTcpSocket* clientSocket = static_cast<QTcpSocket*>(sender());
     QByteArray data(clientSocket->readAll());
+    qDebug()<<"Dispatch command"<<data;
     mDispatcher->dispatchCommand(data);
     clientSocket->close();
 }
