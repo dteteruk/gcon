@@ -9,9 +9,13 @@ SuspendExecutor::SuspendExecutor()
 void SuspendExecutor::execute(const QJsonObject &jobj)
 {
     qDebug()<<"Suspend execute";
-    QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.UPower",
-                                                      "/org/freedesktop/UPower",
-                                                      "org.freedesktop.UPower",
+    QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.login1",
+                                                      "/org/freedesktop/login1",
+                                                      "org.freedesktop.login1.Manager",
                                                       "Suspend");
-    bool queued = QDBusConnection::systemBus().send(msg);
+    QList<QVariant> args;
+    args.append(true);
+    msg.setArguments(args);
+    QDBusMessage repl = QDBusConnection::systemBus().call(msg);
+    qDebug()<<"Error"<<repl.errorMessage();
 }

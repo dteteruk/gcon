@@ -1,9 +1,8 @@
 [Unit]
 Description=gcon server
-After=dbus.service
 
 [Service]
-ExecStart=/home/dmytro/Universe/gcon/bin/gcon-server
+ExecStart=/bin/zsh -c '/usr/bin/gcon-server'
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
