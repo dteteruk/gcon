@@ -6,8 +6,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,12 +20,16 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Main extends Activity {
 
-    public static final String SERVER_IP = "192.168.0.44";
+    public static final String SERVER_IP_1 = "192.168.0.44";
+    public static final String SERVER_IP_2 = "192.168.0.50";
     public static final int SERVER_PORT = 7727;
+    private Spinner hostSpinner;
     private Socket socket;
 
     @Override
@@ -41,20 +47,6 @@ public class Main extends Activity {
                 JSONObject obj = new JSONObject();
                 try {
                     obj.put("cmd", "mute");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                sendCommand(obj);
-            }
-        });
-
-        final Button volBtn = (Button) findViewById(R.id.vol_btn);
-        volBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Log.w("cmd", "volume");
-                JSONObject obj = new JSONObject();
-                try {
-                    obj.put("cmd", "volume");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -100,6 +92,15 @@ public class Main extends Activity {
                 sendCommand(obj);
             }
         });
+
+        hostSpinner = (Spinner) findViewById(R.id.spinner);
+        List<String> list = new ArrayList<String>();
+        list.add(SERVER_IP_2);
+        list.add(SERVER_IP_1);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        hostSpinner.setAdapter(dataAdapter);
     }
 
 
@@ -137,7 +138,7 @@ public class Main extends Activity {
     class ClientThread implements Runnable {
         public void run() {
             try {
-                InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
+                InetAddress serverAddr = InetAddress.getByName(hostSpinner.getSelectedItem().toString());
                 socket = new Socket(serverAddr, SERVER_PORT);
             } catch (UnknownHostException e1) {
                 e1.printStackTrace();
