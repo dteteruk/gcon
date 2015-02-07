@@ -24,7 +24,9 @@ SOURCES += main.cpp \
     muteexecutor.cpp \
     suspendexecutor.cpp \
     servershutdownexecutor.cpp \
-    volumeexecutor.cpp
+    volumeexecutor.cpp \
+    serverstate.cpp \
+    inhibitexecutor.cpp
 
 HEADERS += \
     dispatcher.h \
@@ -33,6 +35,8 @@ HEADERS += \
     muteexecutor.h \
     suspendexecutor.h \
     servershutdownexecutor.h \
-    volumeexecutor.h
+    volumeexecutor.h \
+    serverstate.h \
+    inhibitexecutor.h
 
 LIBS += -lasound

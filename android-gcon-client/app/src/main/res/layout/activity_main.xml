@@ -28,6 +28,15 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/mute_btn" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lock ScreenSaver"
+        android:id="@+id/unlock_btn"
+        android:layout_below="@+id/susp_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true" />
 
     <SeekBar
         android:layout_width="wrap_content"

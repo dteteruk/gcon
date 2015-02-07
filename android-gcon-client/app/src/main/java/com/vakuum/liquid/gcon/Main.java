@@ -31,6 +31,7 @@ public class Main extends Activity {
     public static final int SERVER_PORT = 7727;
     private Spinner hostSpinner;
     private Socket socket;
+    private static boolean inhibitStatus = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +91,27 @@ public class Main extends Activity {
                     e.printStackTrace();
                 }
                 sendCommand(obj);
+            }
+        });
+
+        final Button unlockBtn = (Button) findViewById(R.id.unlock_btn);
+        unlockBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.w("cmd", "inhibit");
+                inhibitStatus = !inhibitStatus;
+                JSONObject obj = new JSONObject();
+                try {
+                    obj.put("cmd", "inhibit");
+                    obj.put("inhibit", inhibitStatus);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                sendCommand(obj);
+                if (inhibitStatus) {
+                    unlockBtn.setText("Unlock ScreenSaver");
+                } else {
+                    unlockBtn.setText("Lock ScreenSaver");
+                }
             }
         });
 
